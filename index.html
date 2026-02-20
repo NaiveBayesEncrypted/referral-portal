@@ -3,60 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Deals Portal</title>
+  <title>Rogers Deals Portal</title>
   <style>
-    body{font-family:Arial,sans-serif;max-width:760px;margin:0 auto;padding:24px;background:#f7f8fb;color:#111}
-    .card{background:#fff;padding:18px;border-radius:12px;margin:14px 0;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-    h1{margin-top:0}
-    .deal{padding:10px;border:1px solid #ececec;border-radius:8px;margin:8px 0}
-    label{display:block;margin-top:10px;font-weight:600}
-    input,textarea{width:100%;padding:10px;border:1px solid #d5d5d5;border-radius:8px}
-    button{margin-top:14px;background:#111;color:#fff;border:0;padding:12px 14px;border-radius:8px;cursor:pointer}
-    .small{font-size:12px;color:#666}
-    .pill{display:inline-block;background:#eef3ff;color:#2643a2;padding:6px 10px;border-radius:999px;font-size:12px}
+    :root{
+      --rogers-red:#da1a21;
+      --rogers-dark:#111;
+      --bg:#f6f7fb;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:#121212}
+    .hero{background:linear-gradient(135deg,var(--rogers-red),#b60f16);color:#fff;padding:36px 20px}
+    .wrap{max-width:860px;margin:0 auto}
+    h1,h2,h3{margin:0 0 10px}
+    .sub{opacity:.92;line-height:1.5}
+    .ref-badge{display:inline-block;margin-top:14px;background:rgba(255,255,255,.17);padding:8px 12px;border-radius:999px;font-weight:600}
+    .card{background:#fff;border-radius:14px;padding:18px;margin:14px 0;box-shadow:0 6px 20px rgba(0,0,0,.06);border:1px solid #ececf3}
+    .deal{border:1px solid #eee;border-left:5px solid var(--rogers-red);border-radius:10px;padding:12px;margin:10px 0;background:#fff}
+    .deal strong{color:var(--rogers-red)}
+    label{display:block;margin-top:10px;font-weight:700}
+    input,textarea,select{width:100%;padding:11px;border:1px solid #d7d7df;border-radius:10px;font-size:15px}
+    input:focus,textarea:focus,select:focus{outline:none;border-color:var(--rogers-red);box-shadow:0 0 0 3px rgba(218,26,33,.12)}
+    button{margin-top:14px;width:100%;background:var(--rogers-red);color:#fff;border:0;padding:12px 14px;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer}
+    button:hover{filter:brightness(.95)}
+    .small{font-size:12px;color:#666;line-height:1.4}
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Exclusive Deals</h1>
-    <p>Pick the best offer and submit your details. We'll contact you shortly.</p>
-    <p><span class="pill" id="sourcePill">Referrer: Direct</span></p>
-  </div>
+  <header class="hero">
+    <div class="wrap">
+      <h1>Rogers Deals Portal</h1>
+      <p class="sub">Exclusive plans and promotions. Submit your details and a rep will contact you with the best offer.</p>
+      <div class="ref-badge" id="sourcePill">Referrer: Direct</div>
+    </div>
+  </header>
 
-  <div class="card">
-    <h2>Current Deals</h2>
-    <div class="deal"><strong>Deal 1:</strong> Free consultation + 10% off first month</div>
-    <div class="deal"><strong>Deal 2:</strong> Priority onboarding + no setup fee</div>
-    <div class="deal"><strong>Deal 3:</strong> Bring a friend, both get bonus credit</div>
-  </div>
+  <main class="wrap" style="padding:16px">
+    <section class="card">
+      <h2>Current Deals</h2>
+      <div class="deal"><strong>Deal 1:</strong> Special monthly discount on select plans</div>
+      <div class="deal"><strong>Deal 2:</strong> Activation perks for new signups</div>
+      <div class="deal"><strong>Deal 3:</strong> Family/add-on savings options available</div>
+    </section>
 
-  <div class="card">
-    <h2>Claim a Deal</h2>
-    <form id="leadForm" action="https://formsubmit.co/jahanjanamuda@gmail.com" method="POST">
-      <input type="hidden" name="_subject" value="New Referral Lead" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="referrer" id="referrerInput" value="direct" />
+    <section class="card">
+      <h2>Claim a Deal</h2>
+      <form action="https://formsubmit.co/jahanjanamuda@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Rogers Referral Lead" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="referrer" id="referrerInput" value="direct" />
 
-      <label>Name</label>
-      <input name="name" required />
+        <label for="name">Full Name</label>
+        <input id="name" name="name" required />
 
-      <label>Phone</label>
-      <input name="phone" required />
+        <label for="phone">Phone Number</label>
+        <input id="phone" name="phone" required />
 
-      <label>Email</label>
-      <input type="email" name="email" required />
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" required />
 
-      <label>Selected Deal</label>
-      <input name="deal" placeholder="Deal 1 / Deal 2 / Deal 3" required />
+        <label for="deal">Interested Deal</label>
+        <select id="deal" name="deal" required>
+          <option value="">Select a deal</option>
+          <option>Deal 1</option>
+          <option>Deal 2</option>
+          <option>Deal 3</option>
+        </select>
 
-      <label>Notes (optional)</label>
-      <textarea name="notes" rows="3"></textarea>
+        <label for="notes">Notes (optional)</label>
+        <textarea id="notes" name="notes" rows="3" placeholder="Best time to call, preferred plan, etc."></textarea>
 
-      <button type="submit">Submit</button>
-      <p class="small">By submitting, you agree to be contacted about this deal.</p>
-    </form>
-  </div>
+        <button type="submit">Submit Request</button>
+        <p class="small">By submitting, you agree to be contacted regarding Rogers offers. Your details are used only for follow-up.</p>
+      </form>
+    </section>
+  </main>
 
   <script>
     const params = new URLSearchParams(window.location.search);
