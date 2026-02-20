@@ -4,86 +4,139 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rogers Deals Portal</title>
+  <meta name="description" content="Exclusive Rogers deals. Submit your details and a Rogers rep will contact you quickly." />
   <style>
     :root{
       --rogers-red:#da1a21;
-      --rogers-dark:#111;
-      --bg:#f6f7fb;
+      --rogers-red-dark:#b30f16;
+      --text:#111;
+      --muted:#667085;
+      --bg:#f5f6fa;
+      --ok:#0f9d58;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:#121212}
-    .hero{background:linear-gradient(135deg,var(--rogers-red),#b60f16);color:#fff;padding:36px 20px}
-    .wrap{max-width:860px;margin:0 auto}
-    h1,h2,h3{margin:0 0 10px}
-    .sub{opacity:.92;line-height:1.5}
-    .ref-badge{display:inline-block;margin-top:14px;background:rgba(255,255,255,.17);padding:8px 12px;border-radius:999px;font-weight:600}
-    .card{background:#fff;border-radius:14px;padding:18px;margin:14px 0;box-shadow:0 6px 20px rgba(0,0,0,.06);border:1px solid #ececf3}
-    .deal{border:1px solid #eee;border-left:5px solid var(--rogers-red);border-radius:10px;padding:12px;margin:10px 0;background:#fff}
+    body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:930px;margin:0 auto}
+    .hero{background:linear-gradient(135deg,var(--rogers-red),var(--rogers-red-dark));color:#fff;padding:34px 18px 28px}
+    .logo{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.12);padding:8px 12px;border-radius:999px;font-weight:700;font-size:14px;letter-spacing:.2px}
+    .logo-dot{width:12px;height:12px;border-radius:99px;background:#fff;opacity:.95}
+    h1{margin:14px 0 10px;font-size:34px;line-height:1.1}
+    .sub{max-width:760px;opacity:.95;line-height:1.5;margin:0}
+    .hero-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+    .pill{display:inline-block;background:rgba(255,255,255,.15);padding:8px 12px;border-radius:999px;font-weight:600}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn-white{background:#fff;color:var(--rogers-red)}
+    .btn-wa{background:#25D366;color:#08301a}
+
+    .main{padding:16px}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:14px}
+    @media (max-width:860px){.grid{grid-template-columns:1fr}}
+
+    .card{background:#fff;border-radius:14px;border:1px solid #ececf3;box-shadow:0 7px 24px rgba(16,24,40,.06);padding:18px}
+    h2{margin:0 0 10px}
+    .deal{border:1px solid #ececec;border-left:5px solid var(--rogers-red);border-radius:10px;padding:12px;margin:10px 0;background:#fff}
     .deal strong{color:var(--rogers-red)}
-    label{display:block;margin-top:10px;font-weight:700}
-    input,textarea,select{width:100%;padding:11px;border:1px solid #d7d7df;border-radius:10px;font-size:15px}
-    input:focus,textarea:focus,select:focus{outline:none;border-color:var(--rogers-red);box-shadow:0 0 0 3px rgba(218,26,33,.12)}
-    button{margin-top:14px;width:100%;background:var(--rogers-red);color:#fff;border:0;padding:12px 14px;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer}
-    button:hover{filter:brightness(.95)}
-    .small{font-size:12px;color:#666;line-height:1.4}
+    .trust{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+    .trust div{background:#fafbff;border:1px solid #eef0f6;border-radius:10px;padding:10px;font-size:13px;color:#334155}
+
+    label{display:block;margin-top:10px;margin-bottom:5px;font-weight:700}
+    input,select,textarea{width:100%;padding:11px;border:1px solid #d4d7df;border-radius:10px;font-size:15px}
+    input:focus,select:focus,textarea:focus{outline:none;border-color:var(--rogers-red);box-shadow:0 0 0 3px rgba(218,26,33,.13)}
+    .submit{margin-top:14px;width:100%;border:0;background:var(--rogers-red);color:#fff;padding:12px 14px;border-radius:10px;font-weight:700;cursor:pointer}
+    .submit:hover{filter:brightness(.96)}
+    .small{font-size:12px;color:#667085;line-height:1.4;margin-top:10px}
+    .quick{margin-top:12px;font-size:13px}
+    .quick a{color:var(--rogers-red);font-weight:700;text-decoration:none}
+
+    .footer{padding:8px 16px 24px;text-align:center;font-size:12px;color:#8a8f9c}
   </style>
 </head>
 <body>
   <header class="hero">
     <div class="wrap">
-      <h1>Rogers Deals Portal</h1>
-      <p class="sub">Exclusive plans and promotions. Submit your details and a rep will contact you with the best offer.</p>
-      <div class="ref-badge" id="sourcePill">Referrer: Direct</div>
+      <div class="logo"><span class="logo-dot"></span> Rogers Deals • Calgary</div>
+      <h1>Get the Best Rogers Offer</h1>
+      <p class="sub">Exclusive mobile & home service promotions. Fill this quick form and a sales rep will contact you fast with your best available deal.</p>
+      <div class="hero-row">
+        <span class="pill" id="sourcePill">Referrer: direct</span>
+        <a class="btn btn-white" href="#claim">Claim Deal</a>
+        <a class="btn btn-wa" id="waTop" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      </div>
     </div>
   </header>
 
-  <main class="wrap" style="padding:16px">
-    <section class="card">
-      <h2>Current Deals</h2>
-      <div class="deal"><strong>Deal 1:</strong> Special monthly discount on select plans</div>
-      <div class="deal"><strong>Deal 2:</strong> Activation perks for new signups</div>
-      <div class="deal"><strong>Deal 3:</strong> Family/add-on savings options available</div>
-    </section>
+  <main class="wrap main">
+    <div class="grid">
+      <section class="card">
+        <h2>Current Deals</h2>
+        <div class="deal"><strong>Deal 1:</strong> Monthly savings on select Rogers plans</div>
+        <div class="deal"><strong>Deal 2:</strong> Activation perks for eligible new signups</div>
+        <div class="deal"><strong>Deal 3:</strong> Multi-line / family add-on savings options</div>
 
-    <section class="card">
-      <h2>Claim a Deal</h2>
-      <form action="https://formsubmit.co/jahanjanamuda@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="New Rogers Referral Lead" />
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="referrer" id="referrerInput" value="direct" />
+        <div class="trust">
+          <div>✅ Fast follow-up (usually same day)</div>
+          <div>✅ Personalized based on your needs</div>
+          <div>✅ No-obligation quote</div>
+          <div>✅ Referral source tracking enabled</div>
+        </div>
+      </section>
 
-        <label for="name">Full Name</label>
-        <input id="name" name="name" required />
+      <section class="card" id="claim">
+        <h2>Claim a Deal</h2>
+        <form action="https://formsubmit.co/jahanjanamuda@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Rogers Referral Lead" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" id="nextUrl" value="" />
+          <input type="hidden" name="referrer" id="referrerInput" value="direct" />
 
-        <label for="phone">Phone Number</label>
-        <input id="phone" name="phone" required />
+          <label for="name">Full Name</label>
+          <input id="name" name="name" required />
 
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" required />
+          <label for="phone">Phone Number</label>
+          <input id="phone" name="phone" required />
 
-        <label for="deal">Interested Deal</label>
-        <select id="deal" name="deal" required>
-          <option value="">Select a deal</option>
-          <option>Deal 1</option>
-          <option>Deal 2</option>
-          <option>Deal 3</option>
-        </select>
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required />
 
-        <label for="notes">Notes (optional)</label>
-        <textarea id="notes" name="notes" rows="3" placeholder="Best time to call, preferred plan, etc."></textarea>
+          <label for="deal">Interested Deal</label>
+          <select id="deal" name="deal" required>
+            <option value="">Select a deal</option>
+            <option>Deal 1</option>
+            <option>Deal 2</option>
+            <option>Deal 3</option>
+          </select>
 
-        <button type="submit">Submit Request</button>
-        <p class="small">By submitting, you agree to be contacted regarding Rogers offers. Your details are used only for follow-up.</p>
-      </form>
-    </section>
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Best time to call, preferred plan, city, etc."></textarea>
+
+          <button class="submit" type="submit">Submit Request</button>
+          <p class="small">By submitting, you agree to be contacted about Rogers offers. Your details are used only for follow-up.</p>
+          <p class="quick">Need faster support? <a id="waInline" href="#" target="_blank" rel="noopener">Message us on WhatsApp</a></p>
+        </form>
+      </section>
+    </div>
   </main>
+
+  <div class="footer">Rogers Deals Portal • Lead source tracking active</div>
 
   <script>
     const params = new URLSearchParams(window.location.search);
     const ref = (params.get('ref') || 'direct').trim();
-    document.getElementById('referrerInput').value = ref;
+
     document.getElementById('sourcePill').textContent = 'Referrer: ' + ref;
+    document.getElementById('referrerInput').value = ref;
+
+    // Set thank-you redirect while preserving ref source
+    const thankYouUrl = `${window.location.origin}${window.location.pathname.replace(/index\.html$/, '')}thank-you.html?ref=${encodeURIComponent(ref)}`;
+    document.getElementById('nextUrl').value = thankYouUrl;
+
+    // WhatsApp quick contact (replace number anytime)
+    const waNumber = '15871234567'; // format: country code + number, no +
+    const waText = `Hi, I want Rogers deals info. Referrer: ${ref}`;
+    const waLink = `https://wa.me/${waNumber}?text=${encodeURIComponent(waText)}`;
+    document.getElementById('waTop').href = waLink;
+    document.getElementById('waInline').href = waLink;
   </script>
 </body>
 </html>
