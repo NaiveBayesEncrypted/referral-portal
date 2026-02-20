@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deals Portal</title>
+  <style>
+    body{font-family:Arial,sans-serif;max-width:760px;margin:0 auto;padding:24px;background:#f7f8fb;color:#111}
+    .card{background:#fff;padding:18px;border-radius:12px;margin:14px 0;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+    h1{margin-top:0}
+    .deal{padding:10px;border:1px solid #ececec;border-radius:8px;margin:8px 0}
+    label{display:block;margin-top:10px;font-weight:600}
+    input,textarea{width:100%;padding:10px;border:1px solid #d5d5d5;border-radius:8px}
+    button{margin-top:14px;background:#111;color:#fff;border:0;padding:12px 14px;border-radius:8px;cursor:pointer}
+    .small{font-size:12px;color:#666}
+    .pill{display:inline-block;background:#eef3ff;color:#2643a2;padding:6px 10px;border-radius:999px;font-size:12px}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Exclusive Deals</h1>
+    <p>Pick the best offer and submit your details. We'll contact you shortly.</p>
+    <p><span class="pill" id="sourcePill">Referrer: Direct</span></p>
+  </div>
+
+  <div class="card">
+    <h2>Current Deals</h2>
+    <div class="deal"><strong>Deal 1:</strong> Free consultation + 10% off first month</div>
+    <div class="deal"><strong>Deal 2:</strong> Priority onboarding + no setup fee</div>
+    <div class="deal"><strong>Deal 3:</strong> Bring a friend, both get bonus credit</div>
+  </div>
+
+  <div class="card">
+    <h2>Claim a Deal</h2>
+    <form id="leadForm" action="https://formsubmit.co/jahanjanamuda@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Referral Lead" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="referrer" id="referrerInput" value="direct" />
+
+      <label>Name</label>
+      <input name="name" required />
+
+      <label>Phone</label>
+      <input name="phone" required />
+
+      <label>Email</label>
+      <input type="email" name="email" required />
+
+      <label>Selected Deal</label>
+      <input name="deal" placeholder="Deal 1 / Deal 2 / Deal 3" required />
+
+      <label>Notes (optional)</label>
+      <textarea name="notes" rows="3"></textarea>
+
+      <button type="submit">Submit</button>
+      <p class="small">By submitting, you agree to be contacted about this deal.</p>
+    </form>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const ref = (params.get('ref') || 'direct').trim();
+    document.getElementById('referrerInput').value = ref;
+    document.getElementById('sourcePill').textContent = 'Referrer: ' + ref;
+  </script>
+</body>
+</html>
